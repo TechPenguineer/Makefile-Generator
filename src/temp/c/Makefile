@@ -1,26 +1,15 @@
-# Copyright 2021 Tech Penguineer
-# 
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-# 
-#     http://www.apache.org/licenses/LICENSE-2.0
-# 
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
-
-# C MAKEFILE
-
 CC=gcc
 CFLAGS=-g
-EXT=[EXTENTION_NAME] # exe, out, or custom
-OUTPUT_NAME=[OUTPUT_NAME].[EXT]
+EXT= # exe, out, or custom
+OUTPUT_NAME= # Project Name
 SRC = $(patsubst %.c)
 HEADERS = $(patsubst %.h)
+OUTPUT_DIRECTORY = $(wildcard out)\\$(OUTPUT_NAME).$(EXT)
 
 build: $(HEADERS)
-	$(CC) $(CFLAGS) $(SRC) -o [OUTPUT_DIRECTORY]
+	mkdir Out
+	$(CC) $(CFLAGS) $(SRC) -o $(OUTPUT_DIRECTORY)
+	
+
+clean:
+	-rm $(wildcard out/*)
